@@ -39,7 +39,8 @@ h1 {
 </head>
 <body>
     <div class="card">
-        <h1>QR Scanner</h1>asd
+        <h1>QR Scanner</h1>
+        DND
         <!-- Add this button inside the card div in your HTML -->
 <button id="start-scan">Start Scan</button>
 
@@ -61,6 +62,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     
                     if (rearCamera) {
                         scanner.start(rearCamera);
+                        // Apply a flip transformation for rear camera
+                        document.getElementById('qr-video').style.transform = 'scaleX(-1)';
                     } else {
                         console.error('Rear camera not found. Using default camera:', cameras[0]);
                         scanner.start(cameras[0]);
@@ -93,6 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = content;
     });
 });
+
 
     </script>
 </body>
