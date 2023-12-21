@@ -56,7 +56,15 @@ document.addEventListener('DOMContentLoaded', function () {
         requestCameraPermission().then(function () {
             Instascan.Camera.getCameras().then(function (cameras) {
                 if (cameras.length > 0) {
-                    scanner.start(cameras[0]);
+                    // Find the rear camera
+                    const rearCamera = cameras.find(camera => camera.name.includes('back') || camera.name.includes('rear'));
+                    
+                    if (rearCamera) {
+                        scanner.start(rearCamera);
+                    } else {
+                        console.error('Rear camera not found. Using default camera:', cameras[0]);
+                        scanner.start(cameras[0]);
+                    }
                 } else {
                     console.error('No cameras found.');
                 }
