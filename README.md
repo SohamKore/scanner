@@ -1,2 +1,2 @@
 # scanner
-scan stuff pretty simple.
+qr scanner pretty simple.
